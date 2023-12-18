@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./App";
 import HomeScreen from "./screens/HomeScreen";
+import ProductScreen from "./screens/ProductScreen";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,6 +19,7 @@ root.render(
         <Route path="/" element={<App />} >
           <Route path="/" element={<HomeScreen />} />
         </Route>
+        <Route path="/product/:id" element={<ProductScreen />} />
       </Routes>
     </Router>
   </React.StrictMode>
