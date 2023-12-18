@@ -6,8 +6,8 @@ import logo from "../assets/logo.png";
 function header() {
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
-        <Container>
+      <Navbar bg="secondary" variant="dark" expand="md" collapseOnSelect>
+        <Container className="fw-bold">
           <LinkContainer to="/">
             <Navbar.Brand>
               <img
