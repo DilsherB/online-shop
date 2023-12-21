@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 function Footer() {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="bg-secondary text-white fs-3 fw-bold" style={{letterSpacing: "0.5rem"}}>
+    <footer className="bg-secondary text-white fs-3 fw-bold">
       <Container>
         <Row>
           <Col className="text-center py-3">
@@ -12,7 +12,7 @@ function Footer() {
         </Row>
       </Container>
     </footer>
-    )
+  );
 }
 
 export default Footer;
