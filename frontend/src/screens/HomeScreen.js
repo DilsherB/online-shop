@@ -1,15 +1,16 @@
 import { Row, Col } from "react-bootstrap";
 import ProductCard from "../components/ProductCard";
 import { useGetProductsQuery } from "../slices/productsApiSlice";
+import Loader from "../components/Loader";
 
 const HomeScreen = () => {
   const { data: products, isLoading, error } = useGetProductsQuery();
   return (
     <>
       {isLoading ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : error ? (
-        <div>error?.data?.message || error.error</div>
+        <div>{error?.data?.message || error.error}</div>
       ) : (
         <>
           <h1 className="text-center">Latest products</h1>

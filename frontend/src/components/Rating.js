@@ -4,7 +4,7 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
 const Rating = ({ value }) => {
   const stars = Array(5)
-    .fill(<FaRegStar className="text-muted" />)
+    .fill(<FaRegStar className="text-muted" key="empty" />)
     .map((star, i) =>
       value >= i + 1 ? (
         <FaStar key={i} className="text-warning" />
