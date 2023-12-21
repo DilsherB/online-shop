@@ -15,7 +15,7 @@ const ProductScreen = () => {
   } = useGetSingleProductQuery(productId);
   return (
     <>
-      <Link to="/" className="btn btn-light my-2 mx-3">
+      <Link className="btn btn-light my-2 mx-3" to="/">
         Go Back
       </Link>
       {isLoading ? (
@@ -51,7 +51,7 @@ const ProductScreen = () => {
           </Col>
           <Col md={4}>
             <Card>
-              <ListGroup>
+              <ListGroup variant="flush">
                 <ListGroup.Item>
                   <Row>
                     <Col>Price:</Col>
