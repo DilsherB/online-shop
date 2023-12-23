@@ -8,6 +8,7 @@ import "./index.css";
 import App from "./App";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
+import CartScreen from "./screens/CartScreen";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,6 +19,7 @@ root.render(
           <Route path="/" element={<App />}>
             <Route path="/" element={<HomeScreen />} />
             <Route path="/product/:id" element={<ProductScreen />} />
+            <Route path="/cart" element={<CartScreen />} />
           </Route>
         </Routes>
       </Router>
