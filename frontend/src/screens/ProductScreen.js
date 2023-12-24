@@ -34,9 +34,9 @@ const ProductScreen = () => {
   }, [productId]);
 
   const addToCartHandler = () => {
-    dispatch(addToCart({...product, qty}));
-    navigate('/cart')
-  }
+    dispatch(addToCart({ ...product, qty }));
+    navigate("/cart");
+  };
   return (
     <>
       <Link to="/" className="btn btn-light my-2 mx-3">
@@ -110,8 +110,8 @@ const ProductScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Button
-                    className={`btn-block ${
-                      product.countInStock === 0 ? "btn-secondary disabled" : ""
+                    className={`${
+                      product.countInStock === 0 && "btn-secondary disabled"
                     }`}
                     type="button"
                     onClick={addToCartHandler}

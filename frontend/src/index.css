@@ -9,7 +9,7 @@
 @keyframes glow {
   0% {
     color: black;
-    box-shadow: 0 0 2px #ff983c, 0 0 4px #ff6b
+    box-shadow: 0 0 2px #ff983c, 0 0 4px #ff6b;
   }
   100% {
     color: #e0d509;

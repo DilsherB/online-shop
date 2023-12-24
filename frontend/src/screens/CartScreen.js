@@ -90,7 +90,13 @@ const CartScreen = () => {
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Button className={`${cartItems.length === 0 && "disabled btn-secondary"}`}>Proceed to Checkout</Button>
+                  <Button
+                    className={`${
+                      cartItems.length === 0 && "disabled btn-secondary"
+                    }`}
+                  >
+                    Proceed to Checkout
+                  </Button>
                 </Row>
               </ListGroup.Item>
             </ListGroup>
