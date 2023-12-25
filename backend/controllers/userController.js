@@ -1,6 +1,7 @@
 import asyncHandler from "../middleware/asyncHandler.js";
 import User from "../models/user.model.js";
-import jwt from "jsonwebtoken";
+import generateToken from "../utils/generateToken.js";
+import { UserDataError, getUserData } from "../utils/getUserData.js";
 
 // @desc    Auth user & get token
 // @route   POST /api/users/login
@@ -10,25 +11,18 @@ const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   if (user && (await user.matchPassword(password))) {
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "30d",
-    });
-    res.cookie("JWT", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV !== "development",
-      sameSite: "strict",
-      maxAge: 1000 * 60 * 60 * 24 * 30,
-    });
-
-    res.json({
-      _id: user._id,
-      name: user.name,
-      email,
-      isAdmin: user.isAdmin,
-    });
+    generateToken(res, user._id);
+    getUserData(res, 200, user);
+    // res.json({
+    //   _id: user._id,
+    //   name: user.name,
+    //   email,
+    //   isAdmin: user.isAdmin,
+    // });
   } else {
-    res.status(401);
-    throw new Error("Invalid email or password");
+    UserDataError(res, 401, "Invalid email or password");
+    // res.status(401);
+    // throw new Error("Invalid email or password");
   }
 });
 
@@ -54,7 +48,27 @@ const getUserProfile = asyncHandler(async (req, res) => {
 // @route   POST /api/users/
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  res.send("Register user");
+  const { name, email, password } = req.body;
+  const existedUser = await User.findOne({ email });
+  if (existedUser) {
+    res.status(400);
+    throw new Error("User already exists");
+  }
+  const user = await User.create({ name, email, password });
+  if (user) {
+    generateToken(res, user._id);
+    getUserData(res, 201);
+    // res.status(201).json({
+    //   _id: user._id,
+    //   name: user.name,
+    //   email,
+    //   isAdmin: user.isAdmin,
+    // });
+  } else {
+    UserDataError(res, 400, "Invalid user data");
+    // res.status(400);
+    // throw new Error("Invalid user data");
+  }
 });
 
 // @desc    Update user profile
