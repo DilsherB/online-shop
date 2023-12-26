@@ -8,7 +8,7 @@ const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
   console.log(cartItems);
   return (
-    <header>
+    <>
       <Navbar bg="secondary" variant="dark" expand="md" collapseOnSelect>
         <Container className="fw-bold">
           <LinkContainer to="/">
@@ -44,7 +44,7 @@ const Header = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </header>
+    </>
   );
 };
 
