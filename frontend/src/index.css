@@ -17,8 +17,7 @@
   }
 }
 
-footer {
-  bottom: 0;
-  width: 100%;
-  letter-spacing: 0.5rem;
+bg:hover {
+  color: #e0d509;
+  background-color: rgb(3, 2, 63);
 }
