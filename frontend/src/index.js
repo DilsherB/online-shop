@@ -12,6 +12,7 @@ import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen.js";
 import RegisterScreen from "./screens/RegisterScreen.js";
 import ShippingScreen from "./screens/ShippingScreen.js";
+import PrivateRoute from "./components/PrivateRoute.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,7 +26,9 @@ root.render(
             <Route path="/cart" element={<CartScreen />} />
             <Route path="/login" element={<LoginScreen />} />
             <Route path="/register" element={<RegisterScreen />} />
-            <Route path="/shipping" element={<ShippingScreen />} />
+            <Route path="" element={<PrivateRoute />}>
+              <Route path="/shipping" element={<ShippingScreen />} />
+            </Route>
           </Route>
         </Routes>
       </Router>
