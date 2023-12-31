@@ -21,3 +21,9 @@ bg:hover {
   color: #e0d509;
   background-color: rgb(3, 2, 63);
 }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

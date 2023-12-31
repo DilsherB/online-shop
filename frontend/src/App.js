@@ -10,7 +10,7 @@ const App = () => {
     <>
       <Header />
       <main className="py-3">
-        <Container>
+        <Container style={{paddingBottom: "4.5rem"}}>
           <h1 className="text-center glow">Welcome to Chaman Mart</h1>
           <Outlet />
         </Container>
