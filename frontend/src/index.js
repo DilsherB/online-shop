@@ -14,6 +14,7 @@ import RegisterScreen from "./screens/RegisterScreen.js";
 import ShippingScreen from "./screens/ShippingScreen.js";
 import PrivateRoute from "./components/PrivateRoute.js";
 import PaymentScreen from "./screens/PaymentScreen.js";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -30,6 +31,7 @@ root.render(
             <Route path="" element={<PrivateRoute />}>
               <Route path="/shipping" element={<ShippingScreen />} />
               <Route path="/payment" element={<PaymentScreen />} />
+              <Route path="/placeorder" element={<PlaceOrderScreen />} />
             </Route>
           </Route>
         </Routes>
