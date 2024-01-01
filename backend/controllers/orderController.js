@@ -5,7 +5,43 @@ import Order from "../models/order.model.js";
 // @route   POST /api/orders
 // @access  Private
 const addOrderItems = asycHandler(async (req, res) => {
-  res.send("add order items");
+  const {
+    orderItems,
+    shippingAddress,
+    paymentMethod,
+    itemsPrice,
+    taxPrice,
+    shippingPrice,
+    totalPrice,
+  } = req.body;
+
+  // Check if orderItems is not empty
+  if (orderItems && orderItems.length === 0) {
+    res.status(400);
+    throw new Error("No order items");
+  } else {
+    // Create new order
+    const order = new Order({
+      orderItems: orderItems.map((item) => ({
+        ...item,
+        product: item._id,
+        _id: undefined,
+      })),
+      user: req.user._id,
+      shippingAddress,
+      paymentMethod,
+      itemsPrice,
+      taxPrice,
+      shippingPrice,
+      totalPrice,
+    });
+
+    // Save order to DB
+    const createdOrder = await order.save();
+
+    // Send createdOrder to client
+    res.status(201).json(createdOrder);
+  }
 });
 
 // @desc    Get logged in user orders

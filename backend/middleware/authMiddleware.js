@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import asyncHandler from "./asyncHandler.js";
 import User from "../models/user.model.js";
 
+// Protect middleware
 const protect = asyncHandler(async (req, res, next) => {
   let token;
   token = req.cookies.JWT;
